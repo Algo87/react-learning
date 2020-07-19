@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import Count from "./Count/Count";
 
 function App() {
   // text переменная которая хранит данные, setText функция которая меняет text,
@@ -17,6 +18,7 @@ function App() {
       />
 
       <button onClick={() => alert(text)}>Show text</button>
+        <Count/>
     </div>
   );
 }
