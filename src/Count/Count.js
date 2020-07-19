@@ -1,13 +1,13 @@
 import React, {useState} from "react";
-import "./count.css";
+import "./Count.css";
 
 function Count() {
     const [count, setCount] = useState(0);
     const [countInput, setCountInput] = useState(0);
 
     return (
-        <div>
-            <div className="b-count-btn">
+        <div className='b-count'>
+            <div>
                 <button onClick={() => setCount(count + 1)}>
                     count + 1
                 </button>
