@@ -7,6 +7,7 @@ function Count() {
 
     return (
         <div className='b-count'>
+            <h3>Task 1</h3>
             <div>
                 <button onClick={() => setCount(count + 1)}>
                     count + 1
