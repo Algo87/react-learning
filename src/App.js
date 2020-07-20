@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import "./App.css";
+import Count from "./Count/Count";
+import Post from "./Post/Post";
+import UserList from "./UserList/UserList";
+
 
 function App() {
   // text переменная которая хранит данные, setText функция которая меняет text,
@@ -17,6 +21,10 @@ function App() {
       />
 
       <button onClick={() => alert(text)}>Show text</button>
+        <Count/>
+        <Post/>
+        <UserList/>
+
     </div>
   );
 }
