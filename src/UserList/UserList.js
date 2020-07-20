@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 function UserList() {
   const [usersInfo, setUsersInfo] = useState([]);
   const [load, setLoad] = useState(false);
+
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => {
@@ -11,7 +12,8 @@ function UserList() {
       .then((json) => {
         setLoad(true);
         return setUsersInfo(json);
-      });
+      })
+      .catch((error) => console.error(error));
   }, [load]);
 
   return (

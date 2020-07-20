@@ -10,7 +10,8 @@ function Post() {
       .then((json) => {
         setPostTitle(json.title);
         setPostText(json.body);
-      });
+      })
+      .catch((error) => console.error(error));
   }
 
   return (
