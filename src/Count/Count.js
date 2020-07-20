@@ -1,28 +1,44 @@
-import React, {useState} from "react";
-import "./count.css";
+import React, { useState } from "react";
 
 function Count() {
-    const [count, setCount] = useState(0);
-    const [countInput, setCountInput] = useState(0);
+  const [count, setCount] = useState(0);
+  const [countInput, setCountInput] = useState("");
 
-    return (
-        <div>
-            <div className="b-count-btn">
-                <button onClick={() => setCount(count + 1)}>
-                    count + 1
-                </button>
-            </div>
-            <div>
-                <input onChange={(e) => setCountInput(e.target.value)}/>
+  // function handleChangeNumberInp(e) {
+  //   if (e.target.value.match(/[^0-9]/g)) {
+  //     e.target.value = e.target.value.replace(/[^0-9]/g, "");
+  //   }
+  //   return setCountInput(e.target.value);
+  // }
 
-                <button onClick={() => setCount(count + (+countInput))}> count + inputValue</button>
-            </div>
-            <p className="result">Result: {count}</p>
+  // \d тоже самое что и [0-9], * это любое кол-во символов,
+  // ^ это начало строки, $ это конец
+  // Мы меняем значение только если это число, иначе ничего не делаем
+  // Код получается короче и понятнее, и мы не делаем лишних операций
 
-        </div>
+  function handleChangeNumberInp(e) {
+    if (/^\d*$/.test(e.target.value)) {
+      return setCountInput(e.target.value);
+    }
+  }
 
-    )
-
+  return (
+    <div className="b-count">
+      <h3>Task 1</h3>
+      <div>
+        <button onClick={() => setCount(count + 1)}>count + 1</button>
+      </div>
+      <div>
+        {/* Я добавил в input value={countInput} чтобы input был контролируемый */}
+        <input onChange={handleChangeNumberInp} />
+        <button onClick={() => setCount(count + +countInput)}>
+          {" "}
+          count + inputValue
+        </button>
+      </div>
+      <p className="result">Result: {count}</p>
+    </div>
+  );
 }
 
-export default Count
+export default Count;
