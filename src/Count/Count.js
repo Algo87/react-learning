@@ -5,6 +5,15 @@ function Count() {
     const [count, setCount] = useState(0);
     const [countInput, setCountInput] = useState(0);
 
+    function handleChangeNumberInp(e) {
+        if (e.target.value.match(/[^0-9]/g)) {
+            e.target.value = e.target.value.replace(/[^0-9]/g, "");
+        }
+        return (
+            setCountInput(e.target.value)
+        )
+    }
+
     return (
         <div className='b-count'>
             <h3>Task 1</h3>
@@ -14,8 +23,7 @@ function Count() {
                 </button>
             </div>
             <div>
-                <input onChange={(e) => setCountInput(e.target.value)}/>
-
+                <input onChange={handleChangeNumberInp}/>
                 <button onClick={() => setCount(count + (+countInput))}> count + inputValue</button>
             </div>
             <p className="result">Result: {count}</p>

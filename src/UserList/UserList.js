@@ -13,8 +13,8 @@ function UserList() {
             .then(json => {
                 setLoad(true);
                return(setUsersInfo(json))
-            });
-
+            })
+            .catch(error=>console.log(error));
     }, [load]);
 
     return (
