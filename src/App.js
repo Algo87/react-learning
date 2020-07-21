@@ -20,7 +20,7 @@ function App() {
             <Link to="/">Count</Link>
           </li>
           <li>
-            <Link to="/post">Post</Link>
+            <Link to="/post/1">Post</Link>
           </li>
           <li>
             <Link to="/userlist">UserList</Link>
@@ -31,9 +31,11 @@ function App() {
           <Route exact path="/">
             <Count/>
           </Route>
-          <Route path="/post">
-            <Post/>
-          </Route>
+          <Route
+            path="/post/:id"
+            children={<Post />}
+          />
+
           <Route path="/userlist">
             <UserList/>
           </Route>

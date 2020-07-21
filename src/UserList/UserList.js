@@ -1,19 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 
 function UserList() {
   const [usersInfo, setUsersInfo] = useState([]);
   const [load, setLoad] = useState(false);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => {
-        return response.json();
-      })
-      .then((json) => {
-        setLoad(true);
-        return setUsersInfo(json);
-      })
-      .catch((error) => console.error(error));
+    function loadUser() {
+      fetch("https://jsonplaceholder.typicode.com/users")
+        .then((response) => {
+          return response.json();
+        })
+        .then((json) => {
+          setLoad(true);
+          return setUsersInfo(json);
+        })
+        .catch((error) => console.error(error));
+    }
+
+    let timerId = setTimeout(loadUser, 2000);
+
+    return (
+      function clearTimeOut() {
+        clearTimeout(timerId)
+      }
+    );
   }, [load]);
 
   return (
