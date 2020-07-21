@@ -30,7 +30,7 @@ function Count() {
       </div>
       <div>
         {/* Я добавил в input value={countInput} чтобы input был контролируемый */}
-        <input onChange={handleChangeNumberInp} />
+        <input onChange={handleChangeNumberInp} value={countInput}/>
         <button onClick={() => setCount(count + +countInput)}>
           {" "}
           count + inputValue
