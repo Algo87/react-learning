@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 
-function UserList() {
+function UserList(props) {
   const [usersInfo, setUsersInfo] = useState([]);
   const [load, setLoad] = useState(false);
+  const theme = useContext(props.ThemeContext);
 
   useEffect(() => {
     function loadUser() {
@@ -24,7 +25,7 @@ function UserList() {
   }, [load]);
 
   return (
-    <div className="b-user-list">
+    <div className="b-user-list" style={{ background: theme.background, color: theme.foreground }}>
       <h3>Task 3</h3>
       {load ? (
         <ul>

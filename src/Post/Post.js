@@ -1,14 +1,15 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import {
   BrowserRouter as Router,
   Link,
   useParams
 } from "react-router-dom";
 
-function Post() {
+function Post(props) {
   const [postTitle, setPostTitle] = useState("");
   const [postText, setPostText] = useState("");
   let {id} = useParams();
+  const theme = useContext(props.ThemeContext);
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts/" + id)
@@ -21,7 +22,7 @@ function Post() {
   }, [id]);
 
   return (
-    <div className="b-post">
+    <div className="b-post" style={{ background: theme.background, color: theme.foreground }}>
       <h3>Task 2</h3>
       <div className="b-post-wrap">
         <Link to={(+id <= 1) ? "/post/1" : "/post/" + (Number(id) - 1)}  id="prev"> </Link>
