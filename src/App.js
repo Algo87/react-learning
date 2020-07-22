@@ -10,7 +10,6 @@ import {
   Link
 } from "react-router-dom";
 
-
 function App() {
   return (
     <Router>
@@ -32,11 +31,11 @@ function App() {
             <Count/>
           </Route>
           <Route
+            exact
             path="/post/:id"
             children={<Post />}
           />
-
-          <Route path="/userlist">
+          <Route exact path="/userlist">
             <UserList/>
           </Route>
         </Switch>
