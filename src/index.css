@@ -72,6 +72,11 @@ code {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-direction: column;
+  border: 1px solid #0a0a0a;
+  padding:16px;
+  margin-bottom: 16px;
+  border-radius: 2px;
 }
 .theme-btn{
   margin-left: 24px;

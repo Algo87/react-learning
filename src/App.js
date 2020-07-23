@@ -19,10 +19,10 @@ function App() {
         <div>
           <ul>
             <li>
-              <Link to="/">UserList</Link>
+              <Link to="/">Post</Link>
             </li>
             <li>
-              <Link to="/post/1">Post</Link>
+              <Link to="/userlist">UserList</Link>
             </li>
           </ul>
           <button
@@ -34,10 +34,10 @@ function App() {
           <Switch>
             <Route
               exact
-              path="/post/:id"
+              path="/"
               children={<Post ThemeContext={ThemeContext}/>}
             />
-            <Route exact path="/">
+            <Route exact path="/userlist">
               <UserList ThemeContext={ThemeContext}/>
             </Route>
           </Switch>
