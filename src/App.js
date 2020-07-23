@@ -10,7 +10,6 @@ import {
   Link
 } from "react-router-dom";
 
-
 function App() {
   return (
     <Router>
@@ -20,7 +19,7 @@ function App() {
             <Link to="/">Count</Link>
           </li>
           <li>
-            <Link to="/post">Post</Link>
+            <Link to="/post/1">Post</Link>
           </li>
           <li>
             <Link to="/userlist">UserList</Link>
@@ -31,10 +30,12 @@ function App() {
           <Route exact path="/">
             <Count/>
           </Route>
-          <Route path="/post">
-            <Post/>
-          </Route>
-          <Route path="/userlist">
+          <Route
+            exact
+            path="/post/:id"
+            children={<Post />}
+          />
+          <Route exact path="/userlist">
             <UserList/>
           </Route>
         </Switch>

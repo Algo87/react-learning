@@ -51,3 +51,25 @@ code {
   border: 1px solid #ccc;
   width: 600px;
 }
+#next, #prev{
+  background-image: url("./img/arrow.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 10px 24px;
+  width: 36px;
+  height: 36px;
+  display: block;
+  border:1px solid #ccc;
+  border-radius: 2px;
+}
+#next{
+  transform: rotate(180deg);
+}
+.b-post-content{
+  width: 70%;
+}
+.b-post-wrap{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
