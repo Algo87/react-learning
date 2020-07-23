@@ -19,11 +19,8 @@ function UserList() {
 
     let timerId = setTimeout(loadUser, 2000);
 
-    return (
-      function clearTimeOut() {
-        clearTimeout(timerId)
-      }
-    );
+    return (()=>clearTimeout(timerId));
+
   }, [load]);
 
   return (
