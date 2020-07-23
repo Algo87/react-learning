@@ -1,6 +1,5 @@
 import React, {useState, useEffect, useContext} from "react";
 import {
-  BrowserRouter as Router,
   Link,
   useParams
 } from "react-router-dom";
@@ -10,6 +9,9 @@ function Post(props) {
   const [postText, setPostText] = useState("");
   let {id} = useParams();
   const theme = useContext(props.ThemeContext);
+  let clsArr=['b-post'];
+  clsArr.push(theme);
+  let cls=clsArr.join(' ');
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts/" + id)
@@ -22,7 +24,7 @@ function Post(props) {
   }, [id]);
 
   return (
-    <div className="b-post" style={{ background: theme.background, color: theme.foreground }}>
+    <div className={cls}>
       <h3>Task 2</h3>
       <div className="b-post-wrap">
         <Link to={(+id <= 1) ? "/post/1" : "/post/" + (Number(id) - 1)}  id="prev"> </Link>

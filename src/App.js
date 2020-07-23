@@ -1,8 +1,7 @@
 import React, {useState} from "react";
-import "./App.css";
 import Post from "./Post/Post";
 import UserList from "./UserList/UserList";
-
+import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,26 +9,13 @@ import {
   Link
 } from "react-router-dom";
 
-const themes = {
-  light: {
-    foreground: "#000000",
-    background: "#eeeeee",
-    border: "1px solid #000"
-  },
-  dark: {
-    foreground: "#ffffff",
-    background: "#222222",
-    border: "1px solid #222222"
-  }
-};
-
-let ThemeContext = React.createContext(themes.light);
+let ThemeContext = React.createContext("light-theme");
 
 function App() {
   const [isLightTheme, setIsLightTheme] = useState(true);
   return (
     <Router>
-      <ThemeContext.Provider value={isLightTheme ? themes.light : themes.dark}>
+      <ThemeContext.Provider value={isLightTheme ? 'light-theme' : 'dark-theme'}>
         <div>
           <ul>
             <li>

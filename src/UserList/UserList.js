@@ -4,6 +4,9 @@ function UserList(props) {
   const [usersInfo, setUsersInfo] = useState([]);
   const [load, setLoad] = useState(false);
   const theme = useContext(props.ThemeContext);
+  let clsArr=['b-user-list'];
+  clsArr.push(theme);
+  let cls=clsArr.join(' ');
 
   useEffect(() => {
     function loadUser() {
@@ -17,15 +20,12 @@ function UserList(props) {
         })
         .catch((error) => console.error(error));
     }
-
     let timerId = setTimeout(loadUser, 2000);
-
     return (()=>clearTimeout(timerId));
-
   }, [load]);
 
   return (
-    <div className="b-user-list" style={{ background: theme.background, color: theme.foreground }}>
+    <div className={cls}>
       <h3>Task 3</h3>
       {load ? (
         <ul>
