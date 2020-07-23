@@ -36,18 +36,3 @@
         transform: rotate(360deg);
     }
 }
-
-.dark-theme {
-    color: #ffffff;
-    background: #222222;
-    border: 1px solid #222222;
-}
-.dark-theme .b-post-wrap{
-    border: 1px solid #eeeeee;
-}
-
-.light-theme {
-    color: #000000;
-    background: #eeeeee;
-    border: 1px solid #000
-}

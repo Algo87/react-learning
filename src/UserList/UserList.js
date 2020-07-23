@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useContext} from "react";
+import {Link} from "react-router-dom";
 
 function UserList(props) {
   const [usersInfo, setUsersInfo] = useState([]);
@@ -7,7 +8,6 @@ function UserList(props) {
   let cls = ['b-user-list', theme].join(' ');
 
   useEffect(() => {
-    function loadUser() {
       fetch("https://jsonplaceholder.typicode.com/users")
         .then((response) => {
           return response.json();
@@ -17,9 +17,6 @@ function UserList(props) {
           return setUsersInfo(json);
         })
         .catch((error) => console.error(error));
-    }
-    let timerId = setTimeout(loadUser, 2000);
-    return (()=>clearTimeout(timerId));
   }, [load]);
 
   return (
@@ -28,7 +25,9 @@ function UserList(props) {
       {load ? (
         <ul>
           {usersInfo.map((item) => (
-            <li key={item.id}>{item.name}</li>
+            <li key={item.id}>
+              <Link to={'/users/' + item.id}>{item.name}</Link>
+            </li>
           ))}
         </ul>
       ) : (

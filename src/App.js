@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import Post from "./Post/Post";
+import User from "./User/User";
 import UserList from "./UserList/UserList";
 import './App.css';
 import {
@@ -22,7 +23,7 @@ function App() {
               <Link to="/">Post</Link>
             </li>
             <li>
-              <Link to="/userlist">UserList</Link>
+              <Link to="/users">UserList</Link>
             </li>
           </ul>
           <button
@@ -37,8 +38,11 @@ function App() {
               path="/"
               children={<Post ThemeContext={ThemeContext}/>}
             />
-            <Route exact path="/userlist">
+            <Route exact path="/users">
               <UserList ThemeContext={ThemeContext}/>
+            </Route>
+            <Route  path='/users/:id'>
+              <User ThemeContext={ThemeContext}/>
             </Route>
           </Switch>
         </div>
