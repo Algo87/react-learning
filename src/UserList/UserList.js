@@ -4,9 +4,7 @@ function UserList(props) {
   const [usersInfo, setUsersInfo] = useState([]);
   const [load, setLoad] = useState(false);
   const theme = useContext(props.ThemeContext);
-  let clsArr=['b-user-list'];
-  clsArr.push(theme);
-  let cls=clsArr.join(' ');
+  let cls = ['b-user-list', theme].join(' ');
 
   useEffect(() => {
     function loadUser() {
