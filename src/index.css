@@ -12,7 +12,8 @@ code {
     monospace;
 }
 
-.b-user-list {
+.b-user-list,
+.b-user {
   width: 600px;
   margin: 16px auto;
   border: 1px solid #ccc;
@@ -26,6 +27,20 @@ code {
   list-style: none;
 }
 
+.b-user-list.light-theme li a {
+  color: #000000;
+}
+.b-user-list.dark-theme li a {
+  color: #ffffff;
+}
+.b-user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.user-info-block {
+  width: 280px;
+}
 .b-post {
   width: 600px;
   padding: 16px;
@@ -51,7 +66,8 @@ code {
   border: 1px solid #ccc;
   width: 600px;
 }
-#next, #prev{
+.next,
+.prev {
   background-image: url("./img/arrow.svg");
   background-position: center;
   background-repeat: no-repeat;
@@ -59,25 +75,39 @@ code {
   width: 36px;
   height: 36px;
   display: block;
-  border:1px solid #ccc;
+  border: 1px solid #ccc;
   border-radius: 2px;
 }
-#next{
+.next {
   transform: rotate(180deg);
 }
-.b-post-content{
+.b-post-content {
   width: 70%;
 }
-.b-post-wrap{
+.b-post-wrap {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-direction: column;
+  flex-direction: row;
   border: 1px solid #0a0a0a;
-  padding:16px;
+  padding: 16px;
   margin-bottom: 16px;
   border-radius: 2px;
 }
-.theme-btn{
+.theme-btn {
   margin-left: 24px;
+}
+.dark-theme {
+  color: #ffffff;
+  background: #222222;
+  border: 1px solid #222222;
+}
+.dark-theme .b-post-wrap {
+  border: 1px solid #eeeeee;
+}
+
+.light-theme {
+  color: #000000;
+  background: #eeeeee;
+  border: 1px solid #000;
 }

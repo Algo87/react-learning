@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Home from "./Home/Home";
 import Post from "./Post/Post";
+import User from "./User/User";
 import UserList from "./UserList/UserList";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -23,7 +24,7 @@ function App() {
               <Link to="/post/1">Post</Link>
             </li>
             <li>
-              <Link to="/userlist">UserList</Link>
+              <Link to="/users">UserList</Link>
             </li>
           </ul>
           <button
@@ -34,9 +35,10 @@ function App() {
           </button>
           <hr />
           <Switch>
-            <Route exact path="/" children={<Home />} />
-            <Route exact path="/userlist" children={<UserList />} />
-            <Route exact path="/post/:id" children={<Post />} />
+            <Route path="/users/:id" component={User} />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/users" component={UserList} />
+            <Route exact path="/post/:id" component={Post} />
           </Switch>
         </div>
       </ThemeContext.Provider>

@@ -23,7 +23,7 @@ function Post(props) {
   let posts = [...post];
 
   return (
-    <div className={`b-user-list ${theme}`}>
+    <div className={`b-post ${theme}`}>
       <h3>Task 2</h3>
       {posts.map((item) => (
         <div className="b-post-wrap" key={item.id}>

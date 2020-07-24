@@ -23,19 +23,18 @@ function Post(props) {
     <div className={`b-post ${theme}`}>
       <h3>Task 2</h3>
       <div className="b-post-wrap">
-        <Link to={+id <= 1 ? "/post/1" : "/post/" + (Number(id) - 1)} id="prev">
-          {" "}
-        </Link>
+        <Link
+          className="prev"
+          to={+id <= 1 ? "/post/1" : "/post/" + (Number(id) - 1)}
+        />
         <div className="b-post-content">
           <h1>{postTitle}</h1>
           <p>{postText}</p>
         </div>
         <Link
+          className="next"
           to={+id >= 100 ? "/post/100" : "/post/" + (Number(id) + 1)}
-          id="next"
-        >
-          {" "}
-        </Link>
+        />
       </div>
     </div>
   );
