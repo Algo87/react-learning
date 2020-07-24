@@ -6,7 +6,6 @@ import { ThemeContext } from "../App";
 function User(props) {
   let { id } = useParams();
   const theme = useContext(ThemeContext);
-  let cls = ["b-user", theme].join(" ");
   const [userInfo, setUserInfo] = useState("");
 
   useEffect(() => {
