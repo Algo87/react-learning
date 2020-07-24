@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-
+import { Link } from "react-router-dom";
 import { ThemeContext } from "../App";
 
 function Post(props) {
@@ -29,6 +29,7 @@ function Post(props) {
         <div className="b-post-wrap" key={item.id}>
           <h3>{item.title}</h3>
           <p>{item.body}</p>
+          <Link to={'post/' + item.id}>post link</Link>
         </div>
       ))}
     </div>

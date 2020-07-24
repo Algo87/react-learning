@@ -1,23 +1,33 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, {useState, useEffect, useContext} from "react";
+import {Link, useParams} from "react-router-dom";
 
-import { ThemeContext } from "../App";
+import {ThemeContext} from "../App";
 
-function Post(props) {
+function Post() {
   const [postTitle, setPostTitle] = useState("");
   const [postText, setPostText] = useState("");
-  let { id } = useParams();
+  const [userName, setUserName] = useState("");
+  const [userId, setUserId] = useState("");
+  let {id} = useParams();
   const theme = useContext(ThemeContext);
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts/" + id)
       .then((response) => response.json())
       .then((json) => {
+        setUserId(json.userId);
         setPostTitle(json.title);
         setPostText(json.body);
       })
       .catch((error) => console.error(error));
-  }, [id]);
+
+    fetch("https://jsonplaceholder.typicode.com/users/" + userId)
+      .then((response) => response.json())
+      .then((json) => {
+        setUserName(json.name);
+      })
+      .catch((error) => console.error(error));
+  }, [id, userId]);
 
   return (
     <div className={`b-post ${theme}`}>
@@ -30,6 +40,13 @@ function Post(props) {
         <div className="b-post-content">
           <h1>{postTitle}</h1>
           <p>{postText}</p>
+          <p>
+            <span>Author: </span>
+            <Link to={'/users/' + userId}>{userName}</Link>
+          </p>
+          <div className="b-comments">
+            <Link to={"/post/"+ id + "/comments"}>Comments link</Link>
+          </div>
         </div>
         <Link
           className="next"
