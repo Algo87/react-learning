@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Home from "./Home/Home";
 import Post from "./Post/Post";
+import Comments from "./Comments/Comments";
 import User from "./User/User";
 import UserList from "./UserList/UserList";
 import "./App.css";
@@ -39,6 +40,7 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/users" component={UserList} />
             <Route exact path="/post/:id" component={Post} />
+            <Route exact path="/post/:id/comments" component={Comments} />
           </Switch>
         </div>
       </ThemeContext.Provider>
