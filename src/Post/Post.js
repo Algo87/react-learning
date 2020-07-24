@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from "react";
 import {Link, useParams} from "react-router-dom";
-
 import {ThemeContext} from "../App";
+import Comments from "../Comments/Comments";
 
 function Post() {
   const [postTitle, setPostTitle] = useState("");
@@ -20,14 +20,16 @@ function Post() {
         setPostText(json.body);
       })
       .catch((error) => console.error(error));
+  }, [id]);
 
+  useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users/" + userId)
       .then((response) => response.json())
       .then((json) => {
         setUserName(json.name);
       })
       .catch((error) => console.error(error));
-  }, [id, userId]);
+  }, [userId]);
 
   return (
     <div className={`b-post ${theme}`}>
@@ -44,8 +46,8 @@ function Post() {
             <span>Author: </span>
             <Link to={'/users/' + userId}>{userName}</Link>
           </p>
-          <div className="b-comments">
-            <Link to={"/post/"+ id + "/comments"}>Comments link</Link>
+          <div>
+            <Comments/>
           </div>
         </div>
         <Link

@@ -1,11 +1,9 @@
-import React, {useEffect, useState, useContext} from "react";
+import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import {ThemeContext} from "../App";
 
 function Comments() {
 
   const [commentsArr, setCommentsFrr] = useState([]);
-  const theme = useContext(ThemeContext);
   let {id} = useParams();
 
   useEffect(() => {
@@ -23,7 +21,7 @@ function Comments() {
   }, [id]);
 
   return (
-    <div className={`b-post ${theme}`}>
+    <div className="b-comments">
       <h4>Comments:</h4>
       {(commentsArr).map((itm) => {
           return (

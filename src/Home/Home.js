@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {ThemeContext} from "../App";
 
 function Post() {
-  const [post, setPost] = useState("");
+  const [posts, setPosts] = useState([]);
   const [load, setLoad] = useState(null);
   const theme = useContext(ThemeContext);
   const [limitPosts, setLimitPosts] = useState(10);
@@ -13,11 +13,10 @@ function Post() {
       .then((response) => response.json())
       .then((json) => {
         setLoad(true);
-        return setPost([...json]);
+        return setPosts([...json]);
       })
       .catch((error) => console.error(error));
   }, [load, limitPosts]);
-  let posts = [...post];
 
   return (
     <div className={`b-post ${theme}`}>
