@@ -20,7 +20,7 @@ function Post(props) {
   }, [id]);
 
   return (
-    <div className={`b-user-list ${theme}`}>
+    <div className={`b-post ${theme}`}>
       <h3>Task 2</h3>
       <div className="b-post-wrap">
         <Link to={+id <= 1 ? "/post/1" : "/post/" + (Number(id) - 1)} id="prev">

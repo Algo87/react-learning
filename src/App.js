@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Home from "./Home/Home";
 import Post from "./Post/Post";
 import UserList from "./UserList/UserList";
 import "./App.css";
@@ -16,10 +17,13 @@ function App() {
         <div>
           <ul>
             <li>
-              <Link to="/">UserList</Link>
+              <Link to="/">Home</Link>
             </li>
             <li>
               <Link to="/post/1">Post</Link>
+            </li>
+            <li>
+              <Link to="/userlist">UserList</Link>
             </li>
           </ul>
           <button
@@ -30,10 +34,9 @@ function App() {
           </button>
           <hr />
           <Switch>
+            <Route exact path="/" children={<Home />} />
+            <Route exact path="/userlist" children={<UserList />} />
             <Route exact path="/post/:id" children={<Post />} />
-            <Route exact path="/">
-              <UserList />
-            </Route>
           </Switch>
         </div>
       </ThemeContext.Provider>
