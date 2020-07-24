@@ -73,3 +73,6 @@ code {
   align-items: center;
   justify-content: space-between;
 }
+.theme-btn{
+  margin-left: 24px;
+}

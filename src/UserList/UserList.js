@@ -1,8 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect, useContext } from "react";
 
-function UserList() {
+import { ThemeContext } from "../App";
+
+function UserList(props) {
   const [usersInfo, setUsersInfo] = useState([]);
   const [load, setLoad] = useState(false);
+  const theme = useContext(ThemeContext);
 
   useEffect(() => {
     function loadUser() {
@@ -16,15 +19,12 @@ function UserList() {
         })
         .catch((error) => console.error(error));
     }
-
     let timerId = setTimeout(loadUser, 2000);
-
-    return (()=>clearTimeout(timerId));
-
+    return () => clearTimeout(timerId);
   }, [load]);
 
   return (
-    <div className="b-user-list">
+    <div className={`b-user-list ${theme}`}>
       <h3>Task 3</h3>
       {load ? (
         <ul>
