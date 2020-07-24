@@ -1,21 +1,18 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Post from "./Post/Post";
 import UserList from "./UserList/UserList";
-import './App.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-let ThemeContext = React.createContext("light-theme");
+export const ThemeContext = React.createContext("light-theme");
 
 function App() {
   const [isLightTheme, setIsLightTheme] = useState(true);
   return (
     <Router>
-      <ThemeContext.Provider value={isLightTheme ? 'light-theme' : 'dark-theme'}>
+      <ThemeContext.Provider
+        value={isLightTheme ? "light-theme" : "dark-theme"}
+      >
         <div>
           <ul>
             <li>
@@ -28,17 +25,18 @@ function App() {
           <button
             className="theme-btn"
             onClick={() => setIsLightTheme(!isLightTheme)}
-          >Change Theme Btn
+          >
+            Change Theme Btn
           </button>
-          <hr/>
+          <hr />
           <Switch>
             <Route
               exact
               path="/post/:id"
-              children={<Post ThemeContext={ThemeContext}/>}
+              children={<Post ThemeContext={ThemeContext} />}
             />
             <Route exact path="/">
-              <UserList ThemeContext={ThemeContext}/>
+              <UserList ThemeContext={ThemeContext} />
             </Route>
           </Switch>
         </div>
