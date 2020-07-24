@@ -1,35 +1,41 @@
-import React, {useState, useEffect, useContext} from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Link, useParams } from "react-router-dom";
+
+import { ThemeContext } from "../App";
 
 function Post(props) {
-  const [post, setPost] = useState("");
-  const [load, setLoad] = useState(null);
-  const theme = useContext(props.ThemeContext);
-  let cls = ['b-post', theme].join(' ');
+  const [postTitle, setPostTitle] = useState("");
+  const [postText, setPostText] = useState("");
+  let { id } = useParams();
+  const theme = useContext(ThemeContext);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts/")
+    fetch("https://jsonplaceholder.typicode.com/posts/" + id)
       .then((response) => response.json())
       .then((json) => {
-        setLoad(true);
-        let textArr = [];
-        for (let i = 0; i < 10; i++) {
-          textArr[i] = json[i];
-        }
-        return setPost(textArr);
+        setPostTitle(json.title);
+        setPostText(json.body);
       })
-      .catch((error) => console.error(error))
-  }, [load]);
-  let posts = [...post];
+      .catch((error) => console.error(error));
+  }, [id]);
 
   return (
-    <div className={cls}>
+    <div className={`b-post ${theme}`}>
       <h3>Task 2</h3>
-      {posts.map((item) => (
-        <div className="b-post-wrap" key={item.id}>
-          <h3>{item.title}</h3>
-          <p>{item.body}</p>
+      <div className="b-post-wrap">
+        <Link
+          className="prev"
+          to={+id <= 1 ? "/post/1" : "/post/" + (Number(id) - 1)}
+        />
+        <div className="b-post-content">
+          <h1>{postTitle}</h1>
+          <p>{postText}</p>
         </div>
-      ))}
+        <Link
+          className="next"
+          to={+id >= 100 ? "/post/100" : "/post/" + (Number(id) + 1)}
+        />
+      </div>
     </div>
   );
 }
